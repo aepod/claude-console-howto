@@ -1,0 +1,23 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "sh -c 'D=\"${CLAUDE_PROJECT_DIR:-.}\"; [ -f \"$D/.claude/helpers/statusline.mjs\" ] || D=\"${HOME}\"; exec node \"$D/.claude/helpers/statusline.mjs\"'"
+  },
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "timeout": 5000, "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/hook-handler.mjs\" session-start" }] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "timeout": 5000, "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/hook-handler.mjs\" prompt" }] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Bash", "hooks": [{ "type": "command", "timeout": 5000, "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/hook-handler.mjs\" pre-bash" }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "timeout": 5000, "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/hook-handler.mjs\" post-edit" }] }
+    ],
+    "SessionEnd": [
+      { "hooks": [{ "type": "command", "timeout": 5000, "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/hook-handler.mjs\" session-end" }] }
+    ]
+  }
+}

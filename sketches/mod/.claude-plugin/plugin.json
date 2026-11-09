@@ -1,0 +1,28 @@
+{
+  "name": "my-console",
+  "version": "0.1.0",
+  "description": "Sketch of a project cockpit: one slash command, a pane, a band above the prompt.",
+  "license": "MIT",
+  "userConfig": {
+    "refreshSeconds": {
+      "type": "number",
+      "title": "Disk refresh (seconds)",
+      "description": "How often the project's state files are re-read.",
+      "default": 3
+    },
+    "panel": {
+      "type": "string",
+      "title": "Pane",
+      "description": "auto opens the pane at session start where it docks, without taking the keys; command opens it only on /my-console.",
+      "default": "auto",
+      "options": ["auto", "command"]
+    },
+    "modelControl": {
+      "type": "string",
+      "title": "Claude's control",
+      "description": "What Claude may do through the console tools. off declares no tools.",
+      "default": "off",
+      "options": ["off", "read", "write"]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "description": "The my-console cockpit. Without function hooks nothing here loads; the classic path still works.",
+  "modules": ["./register.tsx"]
+}
